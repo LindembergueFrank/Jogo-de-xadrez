@@ -1,6 +1,7 @@
 package chess;
 
 import boardgame.Peca;
+import boardgame.Posicao;
 import boardgame.Tabuleiro;
 import chess.enums.Cor;
 
@@ -16,5 +17,8 @@ public abstract class PecaXadrez extends Peca {
         return cor;
     }
 
-
+    protected boolean existePecaOponente (Posicao posicao) {
+        PecaXadrez pecaAux = (PecaXadrez) getTabuleiro().peca(posicao);
+        return pecaAux != null && pecaAux.getCor() != cor;
+    }
 }

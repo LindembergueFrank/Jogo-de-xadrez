@@ -30,9 +30,9 @@ public class Posicao {
         return "[ " + row + ", " + column + " ]";
     }
 
-    /*
-    private void setValue(int row, int column) {
+
+    public void setValue(int row, int column) {
         this.row = row;
         this.column = column;
-    }*/
+    }
 }
