@@ -1,6 +1,12 @@
 package chess;
 
+import boardgame.exceptions.TabuleiroException;
 import chess.enums.Cor;
+import chess.PosicaoXadrez;
+import chess.exceptions.XadrezException;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UI {
 
@@ -26,6 +32,21 @@ public class UI {
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    public static PosicaoXadrez lerPosicaoXadrez(Scanner sc) {
+
+        try {
+            String leitura = sc.nextLine();
+            char col = leitura.charAt(0);
+            // Recortar string para receber a linha
+            int row = Integer.parseInt(leitura.substring(1));
+            return new PosicaoXadrez(col, row);
+        }catch(RuntimeException e) {
+            throw new InputMismatchException("Erro ao instanciar posicao no xadrez. " +
+                    "Valores válidos deve ser entre A1 a H8.");
+        }
+
+    }
 
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {

@@ -1,7 +1,11 @@
 package chess;
 
+import boardgame.Peca;
+import boardgame.Posicao;
 import boardgame.Tabuleiro;
+import boardgame.exceptions.TabuleiroException;
 import chess.enums.Cor;
+import chess.exceptions.XadrezException;
 import chess.pecas.Rei;
 import chess.pecas.Torre;
 
@@ -22,6 +26,27 @@ public class PartidaXadrez {
             }
         }
         return pecaDaPartida;
+    }
+
+    public PecaXadrez realizarJogadaXadrez (PosicaoXadrez posicaoOrigem, PosicaoXadrez posicaoDestino){
+        Posicao origem = posicaoOrigem.paraPosicao();
+        Posicao destino = posicaoDestino.paraPosicao();
+        validarPosicaoOrigem(origem);
+        Peca pecaCapturada = realizarMovimento(origem, destino);
+        return (PecaXadrez) pecaCapturada;
+    }
+
+    private Peca realizarMovimento(Posicao origem, Posicao destino){
+        Peca pecaAux = tabuleiro.removerPeca(origem);
+        Peca pecaCapturada = tabuleiro.removerPeca(destino);
+        tabuleiro.colocaPeca(pecaAux, destino);
+        return pecaCapturada;
+    }
+
+    private void validarPosicaoOrigem(Posicao posicao) {
+        if (!tabuleiro.haUmPeca(posicao)){
+            throw new XadrezException("Nao ha peca na posicao de origem");
+        }
     }
 
     private void colocarNovaPeca(char col, int row, PecaXadrez peca){
