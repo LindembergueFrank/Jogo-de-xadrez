@@ -3,16 +3,20 @@ package chess;
 import boardgame.Peca;
 import boardgame.Posicao;
 import boardgame.Tabuleiro;
-import boardgame.exceptions.TabuleiroException;
 import chess.enums.Cor;
 import chess.exceptions.XadrezException;
 import chess.pecas.Rei;
 import chess.pecas.Torre;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PartidaXadrez {
     private int turno;
     private Cor jogadorAtual;
     private Tabuleiro tabuleiro;
+    private List<Peca> pecasNoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas= new ArrayList<>();
 
     public PartidaXadrez() {
         tabuleiro = new Tabuleiro(8, 8);
@@ -58,9 +62,15 @@ public class PartidaXadrez {
 
     private Peca realizarMovimento(Posicao origem, Posicao destino){
         Peca pecaAux = tabuleiro.removerPeca(origem);
-        Peca pecaCapturada = tabuleiro.removerPeca(destino);
+        Peca capturada = tabuleiro.removerPeca(destino);
         tabuleiro.colocaPeca(pecaAux, destino);
-        return pecaCapturada;
+
+        if (capturada != null){
+            pecasNoTabuleiro.remove(capturada);
+            pecasCapturadas.add(capturada);
+        }
+
+        return capturada;
     }
 
     private void validarPosicaoOrigem(Posicao posicao) {
@@ -88,6 +98,7 @@ public class PartidaXadrez {
 
     private void colocarNovaPeca(char col, int row, PecaXadrez peca){
         tabuleiro.colocaPeca(peca, new PosicaoXadrez(col, row).paraPosicao());
+        pecasNoTabuleiro.add(peca);
     }
 
     private void iniciarJogo() {
