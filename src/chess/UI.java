@@ -49,6 +49,13 @@ public class UI {
 
     }
 
+    public static void imprimirPartida(PartidaXadrez partidaXadrez) {
+        imprimirTabuleiro(partidaXadrez.getPecas());
+        System.out.println();
+        System.out.println("Turno: " + partidaXadrez.getTurno());
+        System.out.println("Aguardando jogador(a) das peças: " + partidaXadrez.getJogadorAtual());
+    }
+
     public static void imprimirTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8-i) + " ");
@@ -80,7 +87,7 @@ public class UI {
             System.out.print("-" + ANSI_RESET);
         }
         else {
-            if (peca.getCor() == Cor.WHITE) {
+            if (peca.getCor() == Cor.BRANCAS) {
                 System.out.print(ANSI_WHITE + peca + ANSI_RESET);
             }
             else {
