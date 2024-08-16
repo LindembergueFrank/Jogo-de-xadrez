@@ -20,46 +20,46 @@ public class Torre extends PecaXadrez {
     public boolean[][] possiveisMovimentos() {
         boolean[][] movimentos = new boolean[getTabuleiro().getRows()][getTabuleiro().getCols()];
 
-        Posicao posicao = new Posicao(0, 0);
+        Posicao posicaoAux = new Posicao(0, 0);
 
         // Acima da peca
-        posicao.setValue(posicao.getRow() - 1, posicao.getColumn());
-        while (getTabuleiro().posicaoExiste(posicao) && !getTabuleiro().haUmPeca(posicao)){
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
-            posicao.setRow(posicao.getRow() - 1);
+        posicaoAux.setValue(posicao.getRow() - 1, posicao.getColumn());
+        while (getTabuleiro().posicaoExiste(posicaoAux) && !getTabuleiro().haUmPeca(posicaoAux)){
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
+            posicaoAux.setRow(posicaoAux.getRow() - 1);
         }
-        if (getTabuleiro().posicaoExiste(posicao) && existePecaOponente(posicao)) {
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
+        if (getTabuleiro().posicaoExiste(posicaoAux) && existePecaOponente(posicaoAux)) {
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
         }
 
         // Abaixo da peca
-        posicao.setValue(posicao.getRow() + 1, posicao.getColumn());
-        while (getTabuleiro().posicaoExiste(posicao) && !getTabuleiro().haUmPeca(posicao)){
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
-            posicao.setRow(posicao.getRow() + 1);
+        posicaoAux.setValue(posicao.getRow() + 1, posicao.getColumn());
+        while (getTabuleiro().posicaoExiste(posicaoAux) && !getTabuleiro().haUmPeca(posicaoAux)){
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
+            posicaoAux.setRow(posicaoAux.getRow() + 1);
         }
-        if (getTabuleiro().posicaoExiste(posicao) && existePecaOponente(posicao)) {
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
+        if (getTabuleiro().posicaoExiste(posicaoAux) && existePecaOponente(posicaoAux)) {
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
         }
 
         // Esquerda da peca
-        posicao.setValue(posicao.getRow(), posicao.getColumn() - 1);
-        while (getTabuleiro().posicaoExiste(posicao) && !getTabuleiro().haUmPeca(posicao)){
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
-            posicao.setColumn(posicao.getColumn() - 1);
+        posicaoAux.setValue(posicao.getRow(), posicao.getColumn() - 1);
+        while (getTabuleiro().posicaoExiste(posicaoAux) && !getTabuleiro().haUmPeca(posicaoAux)){
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
+            posicaoAux.setColumn(posicaoAux.getColumn() - 1);
         }
-        if (getTabuleiro().posicaoExiste(posicao) && existePecaOponente(posicao)) {
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
+        if (getTabuleiro().posicaoExiste(posicaoAux) && existePecaOponente(posicaoAux)) {
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
         }
 
         // Direita da peca
-        posicao.setValue(posicao.getRow(), posicao.getColumn() + 1);
-        while (getTabuleiro().posicaoExiste(posicao) && !getTabuleiro().haUmPeca(posicao)){
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
-            posicao.setColumn(posicao.getColumn() + 1);
+        posicaoAux.setValue(posicao.getRow(), posicao.getColumn() + 1);
+        while (getTabuleiro().posicaoExiste(posicaoAux) && !getTabuleiro().haUmPeca(posicaoAux)){
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
+            posicaoAux.setColumn(posicaoAux.getColumn() + 1);
         }
-        if (getTabuleiro().posicaoExiste(posicao) && existePecaOponente(posicao)) {
-            movimentos[posicao.getRow()][posicao.getColumn()] = true;
+        if (getTabuleiro().posicaoExiste(posicaoAux) && existePecaOponente(posicaoAux)) {
+            movimentos[posicaoAux.getRow()][posicaoAux.getColumn()] = true;
         }
 
 

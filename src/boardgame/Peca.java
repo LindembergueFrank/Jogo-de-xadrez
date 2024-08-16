@@ -22,7 +22,7 @@ public abstract class Peca {
         boolean[][] movimentos = possiveisMovimentos();
 
         for(int i=0; i<movimentos.length; i++) {
-            for(int j=0; j<movimentos[0].length; j++) {
+            for(int j=0; j<movimentos.length; j++) {
                 if(movimentos[i][j]) {
                     return true;
                 }
