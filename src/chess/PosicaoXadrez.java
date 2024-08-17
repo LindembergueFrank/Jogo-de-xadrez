@@ -37,7 +37,7 @@ public class PosicaoXadrez {
 
     protected static PosicaoXadrez daPosicao(Posicao posicao) {
         // Casting
-        return new PosicaoXadrez((char) ('a'-posicao.getColumn()), 8-posicao.getRow());
+        return new PosicaoXadrez((char) ('a'+posicao.getColumn()), 8-posicao.getRow());
     }
 
     @Override
