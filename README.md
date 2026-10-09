@@ -1,56 +1,48 @@
-# Jogo de Xadrez em Java
+# Xadrez em Java — projeto de estudo
 
-Implementação de um jogo de xadrez em console desenvolvida como projeto de estudo de **Java e Programação Orientada a Objetos**.
+Aplicação de console para praticar programação orientada a objetos e modelagem de regras de tabuleiro.
 
-O repositório é mantido como registro da evolução em modelagem orientada a objetos e regras de domínio. Ele não pretende ser uma aplicação de produção ou um produto final com interface gráfica.
+## Implementação atual
+
+- Tabuleiro 8 × 8 e conversão de coordenadas.
+- Peças Rei e Torre.
+- Turnos, movimentos, capturas e validação da origem/destino.
+- Lógica de xeque e xeque-mate.
+- Interface de terminal com tratamento de entradas inválidas.
+
+O cenário inicial utiliza apenas reis e torres. Peões, bispos, cavalos, dama e regras associadas à partida completa não estão implementados nesta versão.
+
+## Organização
+
+| Diretório | Conteúdo |
+| --- | --- |
+| [src/application](src/application/) | Entrada da aplicação: `application.Main`. |
+| [src/boardgame](src/boardgame/) | Abstrações de tabuleiro, posições e peças. |
+| [src/chess](src/chess/) | Regras, interface de console e peças de xadrez. |
+
+## Executar
+
+Utilize JDK 17 ou superior. No Linux/macOS, na raiz:
+
+```sh
+javac -d out $(find src -name '*.java')
+java -cp out application.Main
+```
+
+No PowerShell:
+
+```powershell
+$fontesJava = (Get-ChildItem src -Recurse -Filter *.java).FullName
+javac -d out $fontesJava
+java -cp out application.Main
+```
+
+Digite a coordenada de origem e depois a de destino, conforme os pedidos do terminal.
 
 ## Conceitos praticados
 
-- classes, objetos e encapsulamento;
-- herança e polimorfismo;
-- composição;
-- enums;
-- matrizes e coordenadas de tabuleiro;
-- exceções;
-- separação entre regras do tabuleiro e regras específicas do xadrez;
-- implementação incremental de regras de negócio.
-
-## Funcionalidades presentes
-
-O código em `src/` cobre a estrutura do tabuleiro e peças, movimentação e regras do jogo implementadas ao longo do histórico, incluindo lógica relacionada a xeque e xeque-mate.
-
-## Estrutura geral
-
-```text
-src/
-├── boardgame/   # abstrações de tabuleiro, posição e peças
-├── chess/       # regras e entidades específicas de xadrez
-└── application/ # ponto de entrada e interação no console
-```
-
-A estrutura exata pode variar conforme a versão preservada no repositório.
-
-## Executando
-
-Este é um projeto Java simples. Compile os arquivos a partir do diretório `src` com uma JDK compatível ou importe o projeto em sua IDE preferida.
-
-Exemplo genérico:
-
-```bash
-javac -d out $(find src -name "*.java")
-java -cp out application.Program
-```
-
-No Windows, a forma de enumerar os arquivos Java varia conforme o shell; uma IDE pode ser a opção mais simples para este projeto de estudo.
-
-## Higiene do repositório
-
-Metadados específicos de IDE e arquivos gerados não são versionados. O `.gitignore` cobre IntelliJ IDEA, Eclipse/STS, NetBeans, VS Code e saídas de build.
-
-## Papel no portfólio
-
-Este projeto demonstra fundamentos de POO e modelagem de regras. Projetos backend autorais mais recentes devem ser considerados a principal evidência de engenharia de software, testes, segurança e operação.
+Encapsulamento, herança, polimorfismo, composição, enums, matrizes, exceções e separação das responsabilidades de apresentação e domínio.
 
 ## Autor
 
-**Lindembergue Frank**
+Lindembergue Frank.
